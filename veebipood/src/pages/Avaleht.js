@@ -1,38 +1,27 @@
-import { useState } from "react";
 
 function Avaleht() {
-  // let synniaeg = "1913.12.31";
-  const isikukood = "41513123113";
-  const [synniaeg, uuendaSynniaeg] = useState("1913.12.31");
-  const [s6naline, uuendaS6naline] = useState("algväärtus");
-  const [numbriline, uuendaNumbriline] = useState(12313);
-  const [kahendV22rtus, uuendaKahendV22rtus] = useState(true);
+  const tootedLocalStoragest = JSON.parse(localStorage.getItem("toodeteV6ti")) || [];
 
-  const muudaSynniaega = () => {
-    // synniaeg = "123123123";
-    uuendaSynniaeg("19"+isikukood.substring(1,3)+"."+isikukood.substring(3,5)+"."+isikukood.substring(5,7));
-    console.log(synniaeg);
+  // 1. lisamine ostukorvi --> sessionStorage-sse
+  // 2. kuvame ostukorvis kõik tooted
+  // 3. võimaldame ostukorvi seda sama toodet juurde lisada -- .push()
+  // 4. võimaldame ostukorvist seda toodet kustutada -- .splice()
+  // 5. võimaldame ostukorvi tühjendada   -> ostukorviTooted = [];
+  // 6. ------> objektide juurde
+  // 7. igale tootele ka hind   {nimi: "Coca", hind: 6}
+  // [{nimi: "Coca", hind: 6}, {nimi: "Fanta", hind: 6}, {nimi: "Vitamin well", hind: 6}]
+  // 8. ostukorvis kogusumma kokku arvutada     .forEach(elementListist => ...)
+
+  const lisaOstukorvi = (klikitudToode) => {
+    // "ostukorviTooted"
+    // sessionStorage.setItem("ostukorviTooted", ostukorviTootedSessionist);
   }
 
-  const muudaMuutujad = () => {
-    uuendaS6naline("uus väärtus");
-    uuendaNumbriline(4312);
-    uuendaKahendV22rtus(false);
-  }
-
-  return (
+  return (<div>{tootedLocalStoragest.map(elementListist => 
     <div>
-      <br />
-      <div>Isikukood: {isikukood}</div>
-      <button onClick={() => muudaSynniaega()}>Arvuta sünniaeg isikukoodi järgi</button>
-      <br /><br />
-      <div>Sünniaeg: {synniaeg} </div>
-     { kahendV22rtus && <div>Nimi: Juku Kask</div>}
-     { numbriline < 10000 && <div>{s6naline}</div>}
-      <div>{numbriline}</div>
-      <div>{kahendV22rtus + kahendV22rtus}</div>
-      <button onClick={() => muudaMuutujad()}>Muuda kõik muutujad</button>
-    </div>);
+      { elementListist }
+      <button onClick={() => lisaOstukorvi(elementListist)}>Lisa ostukorvi</button>
+    </div>)}</div>);
 }
 
 export default Avaleht;
