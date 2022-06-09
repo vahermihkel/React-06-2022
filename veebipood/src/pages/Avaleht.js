@@ -14,12 +14,17 @@ function Avaleht() {
 
   const lisaOstukorvi = (klikitudToode) => {
     // "ostukorviTooted"
-    // sessionStorage.setItem("ostukorviTooted", ostukorviTootedSessionist);
+    let ostukorv = sessionStorage.getItem("ostukorviTooted");
+    ostukorv = JSON.parse(ostukorv) || [];
+    ostukorv.push(klikitudToode);
+    ostukorv = JSON.stringify(ostukorv);
+    sessionStorage.setItem("ostukorviTooted", ostukorv);
   }
 
   return (<div>{tootedLocalStoragest.map(elementListist => 
     <div>
-      { elementListist }
+      <div>{ elementListist.nimi }</div>
+      <div>{ elementListist.hind }</div>
       <button onClick={() => lisaOstukorvi(elementListist)}>Lisa ostukorvi</button>
     </div>)}</div>);
 }

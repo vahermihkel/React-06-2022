@@ -7,6 +7,8 @@ import { useRef, useState } from "react";
 
 function TooteLisamine() {
   const nimiRef = useRef();
+  const priceRef = useRef();
+  const isActiveRef = useRef();
   // vasak pool - HTMLi     ja ta saab väärtuse esialgu useState(-->SIIT<---)
   // parem pool - JavaScriptis, funktsioon mis annab UUE VÄÄRTUSE
   //              m22raS6num(-->SIIT<---)
@@ -21,7 +23,12 @@ function TooteLisamine() {
       m22raS6num("Lisatud edukalt toode " + nimiRef.current.value);
       let tootedLocalStoragest = localStorage.getItem("toodeteV6ti");
       tootedLocalStoragest = JSON.parse(tootedLocalStoragest) || [];
-      tootedLocalStoragest.push(nimiRef.current.value);
+      const uusToode = {
+        nimi: nimiRef.current.value, 
+        hind: priceRef.current.value, 
+        aktiivne: isActiveRef.current.checked
+      };
+      tootedLocalStoragest.push(uusToode);
       tootedLocalStoragest = JSON.stringify(tootedLocalStoragest);
       localStorage.setItem("toodeteV6ti", tootedLocalStoragest);
     }
@@ -31,6 +38,10 @@ function TooteLisamine() {
   <div>
     <label>Toote nimetus</label> <br />
     <input ref={nimiRef} type="text" /> <br />
+    <label>Toote hind</label> <br />
+    <input ref={priceRef} type="number" /> <br />
+    <label>Toode aktiivne</label> <br />
+    <input ref={isActiveRef} type="checkbox" /> <br />
     <button onClick={lisaToode}>Sisesta</button>
     <div>{s6num}</div>
   </div>);

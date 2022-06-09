@@ -4,6 +4,7 @@ import Avaleht from './pages/Avaleht';
 import Ostukorv from './pages/Ostukorv';
 import Poed from './pages/Poed';
 import TooteLisamine from './pages/TooteLisamine';
+import YksikToode from './pages/YksikToode';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path='ostukorv' exact element={ <Ostukorv /> } />
         <Route path='lisa-toode' exact element={ <TooteLisamine /> } />
         <Route path='poed' exact element={ <Poed /> } />
+        <Route path='toode/:tooteNimi' exact element={ <YksikToode /> } />
       </Routes>
     </div>
   );
