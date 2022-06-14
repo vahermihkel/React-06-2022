@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 function Avaleht() {
   const tootedLocalStoragest = JSON.parse(localStorage.getItem("toodeteV6ti")) || [];
@@ -23,8 +24,11 @@ function Avaleht() {
 
   return (<div>{tootedLocalStoragest.map(elementListist => 
     <div>
-      <div>{ elementListist.nimi }</div>
-      <div>{ elementListist.hind }</div>
+      {/* <Link to={`/toode/${elementListist.nimi}`}></Link> */}
+      <Link to={"/toode/" + elementListist.nimi.toLowerCase().replaceAll(" ", "-")}>
+        <div>{ elementListist.nimi }</div>
+        <div>{ elementListist.hind }</div>
+      </Link>
       <button onClick={() => lisaOstukorvi(elementListist)}>Lisa ostukorvi</button>
     </div>)}</div>);
 }
