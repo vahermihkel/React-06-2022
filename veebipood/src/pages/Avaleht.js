@@ -1,7 +1,10 @@
+import { useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function Avaleht() {
-  const tootedLocalStoragest = JSON.parse(localStorage.getItem("toodeteV6ti")) || [];
+
+  // const tootedLocalStoragest = JSON.parse(localStorage.getItem("toodeteV6ti")) || [];
 
   // 1. lisamine ostukorvi --> sessionStorage-sse
   // 2. kuvame ostukorvis kõik tooted
@@ -12,6 +15,27 @@ function Avaleht() {
   // 7. igale tootele ka hind   {nimi: "Coca", hind: 6}
   // [{nimi: "Coca", hind: 6}, {nimi: "Fanta", hind: 6}, {nimi: "Vitamin well", hind: 6}]
   // 8. ostukorvis kogusumma kokku arvutada     .forEach(elementListist => ...)
+  const [tooted, uuendaTooted] = useState([]);
+
+  const dbUrl = "https://react-06-2022-default-rtdb.europe-west1.firebasedatabase.app/tooted.json";
+
+  useEffect(()=>{
+    fetch(dbUrl).then(tagastus => tagastus.json()).then(sisu => {
+      // console.log(sisu);
+      // {-N4: {…}, -Mr: {…}, -KA: {…}}  -----> [{…},{…},{…}]
+      // uuendaTooted(sisu);
+      const fBaseTooted = [];
+      for (const key in sisu) {
+        fBaseTooted.push(sisu[key]);
+      }
+  
+      uuendaTooted(fBaseTooted)
+     } );
+  },[])
+  
+
+  console.log("tuleb alati enne");
+  console.log(tooted);
 
   const lisaOstukorvi = (klikitudToode) => {
     // "ostukorviTooted"
@@ -22,8 +46,8 @@ function Avaleht() {
     sessionStorage.setItem("ostukorviTooted", ostukorv);
   }
 
-  return (<div>{tootedLocalStoragest.map(elementListist => 
-    <div>
+  return (<div>{tooted.map(elementListist => 
+    <div key={elementListist.nimi}>
       {/* <Link to={`/toode/${elementListist.nimi}`}></Link> */}
       <Link to={"/toode/" + elementListist.nimi.toLowerCase().replaceAll(" ", "-")}>
         <div>{ elementListist.nimi }</div>

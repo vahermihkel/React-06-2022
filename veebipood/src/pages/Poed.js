@@ -23,7 +23,7 @@ function Poed() {
     <div>Meie meeskond:</div>
     <br />
    { ["Mart Poom", "Paavo Järvi", "Kerttu Jukkum"].map(listiElement =>  
-   <div>
+   <div key={listiElement}>
       <div>Liikme nimi: {listiElement}</div>
       <div>Valdkond: Turundus</div>
       <div>Asukoht: Peakontor</div>

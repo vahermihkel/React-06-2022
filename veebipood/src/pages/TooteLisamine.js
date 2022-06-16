@@ -13,6 +13,7 @@ function TooteLisamine() {
   // parem pool - JavaScriptis, funktsioon mis annab UUE VÄÄRTUSE
   //              m22raS6num(-->SIIT<---)
   const [s6num, m22raS6num] = useState("");
+  const dbUrl = "https://react-06-2022-default-rtdb.europe-west1.firebasedatabase.app/tooted.json";
 
   const lisaToode = () => {
     console.log("funktsioon töötab");
@@ -21,16 +22,23 @@ function TooteLisamine() {
       m22raS6num("Ei saa ilma nimeta toodet lisada!");
     } else {
       m22raS6num("Lisatud edukalt toode " + nimiRef.current.value);
-      let tootedLocalStoragest = localStorage.getItem("toodeteV6ti");
-      tootedLocalStoragest = JSON.parse(tootedLocalStoragest) || [];
+      // let tootedLocalStoragest = localStorage.getItem("toodeteV6ti");
+      // tootedLocalStoragest = JSON.parse(tootedLocalStoragest) || [];
       const uusToode = {
         nimi: nimiRef.current.value, 
         hind: priceRef.current.value, 
         aktiivne: isActiveRef.current.checked
       };
-      tootedLocalStoragest.push(uusToode);
-      tootedLocalStoragest = JSON.stringify(tootedLocalStoragest);
-      localStorage.setItem("toodeteV6ti", tootedLocalStoragest);
+      fetch(dbUrl, {
+        method: "POST",
+        body: JSON.stringify(uusToode),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+      // tootedLocalStoragest.push(uusToode);
+      // tootedLocalStoragest = JSON.stringify(tootedLocalStoragest);
+      // localStorage.setItem("toodeteV6ti", tootedLocalStoragest);
     }
   }
 
