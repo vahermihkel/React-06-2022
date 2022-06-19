@@ -2,7 +2,8 @@ import { Container, Nav, Navbar } from 'react-bootstrap';
 import { Link, Route, Routes } from 'react-router-dom';
 import './App.css';
 import { useTranslation } from 'react-i18next';
-import { changeLanguage } from 'i18next';
+import Home from './Home';
+import Cart from './Cart';
 
 function App() {
   const { t, i18n } = useTranslation();
@@ -29,13 +30,13 @@ function App() {
         </Container>
       </Navbar>
       <Routes>
-        <Route path='' exact element={<div>AVALEHT</div>} />
+        <Route path='' exact element={ <Home /> } />
         <Route path='admin' exact element={<div>ADMIN</div>} />
         <Route path='admin/lisa-toode' exact element={<div>LISA TOODE</div>} />
         <Route path='admin/tooted' exact element={<div>TOOTED</div>} />
         <Route path='admin/muuda-toode' exact element={<div>MUUDA TOODE</div>} />
         <Route path='poed' exact element={<div>POED</div>} />
-        <Route path='ostukorv' exact element={<div>OSTUKORV</div>} />
+        <Route path='ostukorv' exact element={ <Cart /> } />
       </Routes>
     </div>
   );

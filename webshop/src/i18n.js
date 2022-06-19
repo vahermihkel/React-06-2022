@@ -11,6 +11,8 @@ const resources = {
       "navbar.admin-button": "Admin vaatesse",
       "navbar.shops-button": "Poed",
       "navbar.cart-button": "Ostukorv",
+      "home.cart-added": "Lisatud edukalt ostukorvi!",
+      "home.add-cart-button": "Lisa ostukorvi",
     }
   },
   ru: {
@@ -19,6 +21,8 @@ const resources = {
       "navbar.admin-button": "Admin vaatesse RU",
       "navbar.shops-button": "Poed RU",
       "navbar.cart-button": "Ostukorv RU",
+      "home.cart-added": "Lisatud edukalt ostukorvi! RU",
+      "home.add-cart-button": "Lisa ostukorvi RU",
     }
   }, 
   uk: {
@@ -27,6 +31,8 @@ const resources = {
       "navbar.admin-button": "To admin view",
       "navbar.shops-button": "Shops",
       "navbar.cart-button": "Cart",
+      "home.cart-added": "Successfully added to cart!",
+      "home.add-cart-button": "Add to cart",
     }
   }
 };
