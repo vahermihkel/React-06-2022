@@ -13,6 +13,10 @@ const resources = {
       "navbar.cart-button": "Ostukorv",
       "home.cart-added": "Lisatud edukalt ostukorvi!",
       "home.add-cart-button": "Lisa ostukorvi",
+      "home.sortaz": "Sorteeri A-Z",
+      "home.sortza": "Sorteeri Z-A",
+      "home.sort-price-asc": "Sorteeri hind kasvavalt",
+      "home.sort-price-desc": "Sorteeri hind kahanevalt"
     }
   },
   ru: {
@@ -23,6 +27,10 @@ const resources = {
       "navbar.cart-button": "Ostukorv RU",
       "home.cart-added": "Lisatud edukalt ostukorvi! RU",
       "home.add-cart-button": "Lisa ostukorvi RU",
+      "home.sortaz": "Sorteeri A-Z RU",
+      "home.sortza": "Sorteeri Z-A RU",
+      "home.sort-price-asc": "Sorteeri hind kasvavalt RU",
+      "home.sort-price-desc": "Sorteeri hind kahanevalt RU"
     }
   }, 
   uk: {
@@ -33,6 +41,10 @@ const resources = {
       "navbar.cart-button": "Cart",
       "home.cart-added": "Successfully added to cart!",
       "home.add-cart-button": "Add to cart",
+      "home.sortaz": "Sort A-Z",
+      "home.sortza": "Sort Z-A",
+      "home.sort-price-asc": "Sort price ascending",
+      "home.sort-price-desc": "Sort price descending"
     }
   }
 };

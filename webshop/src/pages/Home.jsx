@@ -13,7 +13,23 @@ function Home() {
   useEffect(()=>{
     fetch(productDb)
       .then(res => res.json())
-      .then(data => setProducts(data))
+      .then(data => {
+        // {-N54pl: {1}, -321a: {2}} ---> [{1},{2}]
+        const newArray = [];
+        for (const key in data) {
+          newArray.push(data[key]);
+        }
+        // const product = {id: 2, name: "da", category: "a", isActive: true}
+        // const newArray = [];
+        // for (const key in product) {
+        //   // 1. key: id
+        //   newArray.push(product[key]);   // product.id
+        //   // 2. key: name --> product.name
+        //   // 3. key: category --> product.category
+        // }
+        // newArray = [2, "da", "a", true];
+        setProducts(newArray);
+      })
   },[]);
 
   // [{id: 1},{id: 1},{id: 1},{id: 2},{id: 1}] <-- vana viis
@@ -77,7 +93,7 @@ function Home() {
     <button onClick={sortPriceAsc}>{t('home.sort-price-asc')}</button>
     <button onClick={sortPriceDesc}>{t('home.sort-price-desc')}</button>
     {products.map(element => 
-    <div>
+    <div key={element.id}>
       <img src={element.imgSrc} alt="" />
       <div>{element.name}</div>
       <div>{element.price}</div>

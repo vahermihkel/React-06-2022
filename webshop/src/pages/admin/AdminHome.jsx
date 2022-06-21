@@ -7,6 +7,9 @@ function AdminHome() {
     <Link to="/admin/lisa-toode">
       <button>Toodet lisama</button>
     </Link>
+    <Link to="/admin/kategooriad">
+      <button>Halda kategooriaid</button>
+    </Link>
   </div> );
 }
 
