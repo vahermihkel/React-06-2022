@@ -10,12 +10,14 @@ function AddProduct() {
   const isActiveRef = useRef();
   
   const [message, setMessage] = useState("");
-  const productDb = "https://react-06-webshop-default-rtdb.europe-west1.firebasedatabase.app/products.json";
+  const productDbUrl = "https://react-06-webshop-default-rtdb.europe-west1.firebasedatabase.app/products.json";
   const [categories, setCategories] = useState([]);
-  const categoryDb = "https://react-06-webshop-default-rtdb.europe-west1.firebasedatabase.app/categories.json";
+  const categoryDbUrl = "https://react-06-webshop-default-rtdb.europe-west1.firebasedatabase.app/categories.json";
+  const [products, setProducts] = useState([]);
+  const [buttonDisabled, setButtonDisabled] = useState(true);
 
   useEffect(() => {
-    fetch(categoryDb).then(res => res.json())
+    fetch(categoryDbUrl).then(res => res.json())
       .then(data => {
         const newArray = [];
         for (const key in data) {
@@ -23,7 +25,32 @@ function AddProduct() {
         }
         setCategories(newArray);
       })
+    fetch(productDbUrl).then(res => res.json())
+    .then(data => {
+      const newArray = [];
+      for (const key in data) {
+        newArray.push(data[key]);
+      }
+      setProducts(newArray);
+    })
+    // const categoriesFromDb = fetchFromDb(categoryDbUrl);
+    // setCategories(categoriesFromDb);
+    // const productsFromDb = fetchFromDb(productDbUrl);
+    // setProducts(productsFromDb);
   },[]);
+
+  // const fetchFromDb = (url) => {
+  //   let itemsFromDb = []
+  //   fetch(url).then(res => res.json())
+  //   .then(data => {
+  //     const newArray = [];
+  //     for (const key in data) {
+  //       newArray.push(data[key]);
+  //     }
+  //     itemsFromDb = newArray;
+  //   })
+  //   return itemsFromDb;
+  // } 
 
   const addNewProduct = () => {
     if (nameRef.current.value === "") {
@@ -31,15 +58,15 @@ function AddProduct() {
     } else {
       setMessage("Lisatud edukalt toode " + nameRef.current.value);
       const newProduct = {
-        id: idRef.current.value, 
+        id: Number(idRef.current.value), 
         name: nameRef.current.value, 
-        price: priceRef.current.value, 
+        price: Number(priceRef.current.value), 
         category: categoryRef.current.value,
         imgSrc: imgSrcRef.current.value, 
         description: descriptionRef.current.value, 
         isActive: isActiveRef.current.checked
       };
-      fetch(productDb, {
+      fetch(productDbUrl, {
         method: "POST",
         body: JSON.stringify(newProduct),
         headers: {
@@ -49,10 +76,28 @@ function AddProduct() {
     }
   }
 
+  const checkIdUniqueness = () => {
+    if (idRef.current.value.length === 8) {
+      // const index = products.findIndex(element => {
+      //   return Number(element.id) === Number(idRef.current.value)
+      // });
+      const index = products.findIndex(element => 
+          Number(element.id) === Number(idRef.current.value)
+        );
+      if (index >= 0) {
+        setMessage("ID on mitteunikaalne!");
+        setButtonDisabled(true);
+      } else {
+        setMessage("");
+        setButtonDisabled(false);
+      }
+    }
+  }
+
   return (
   <div>
     <label>Toote id</label> <br />
-    <input ref={idRef} type="number" /> <br />
+    <input ref={idRef} onChange={() => checkIdUniqueness()} type="number" /> <br />
     <label>Toote nimi</label> <br />
     <input ref={nameRef} type="text" /> <br />
     <label>Toote hind</label> <br />
@@ -69,7 +114,7 @@ function AddProduct() {
     <input ref={imgSrcRef} type="text" /> <br />
     <label>Toode aktiivne</label> <br />
     <input ref={isActiveRef} type="checkbox" /> <br />
-    <button onClick={addNewProduct}>Sisesta</button>
+    <button disabled={buttonDisabled} onClick={addNewProduct}>Sisesta</button>
     <div>{message}</div>
   </div>);
 }
@@ -77,18 +122,16 @@ function AddProduct() {
 export default AddProduct;
 
 // Täna
-// kategooriad andmebaasi
+// ID unikaalsuse kontroll  onChange={} -> iga vajutusega funktsiooni käimapanek
+// kaardirakendus Leaflet (nagu Google Maps), poed sinna
+//          KOJU: print-screenidena poed andmebaasi
+// child klassid (props) -> event, data
+// Toodete haldamise leht valmis
 
 // T
 // ostukorvi kujundus
 // toast erinevate lehtede erinev disain
-// kaardirakendus Leaflet (nagu Google Maps), poed sinna
-//          KOJU: print-screenidena poed andmebaasi
 
-// N
-// ID unikaalsuse kontroll  onChange={} -> iga vajutusega funktsiooni käimapanek
-
-// Toodete haldamise leht valmis 30.06
 // toodete otsing [ Tablet 10 inc ]  -> iga vajutusega otsib sarnaseid tooteid
 // avalehele kategooriate väljakuvamine -> näitab ainult seda kategooriat mille peale vajutati
 // dünaamilist CSS klassi 
@@ -97,4 +140,3 @@ export default AddProduct;
 //          ei saa kogust muuta, alati viimane ostukorvis, ID-ga ei saa lisada
 //  https://react-query.tanstack.com/overview
 
-// child klassid (props) -> event, data

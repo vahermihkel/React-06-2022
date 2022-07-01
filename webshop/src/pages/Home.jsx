@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
+import SortButtons from "../components/SortButtons";
 
 // ffc    https://react-query.tanstack.com/overview
 // toast erinevate lehtede erinev disain
@@ -64,39 +65,19 @@ function Home() {
     });
   }
 
-  const sortAZ = () => { // .name
-    products.sort((a,b)=> a.name.localeCompare(b.name));
-    setProducts(products.slice());
-  }
-
-  const sortZA = () => {
-    // "ipad" - "samsung" = ????
-    products.sort((a,b)=> b.name.localeCompare(a.name));
-    setProducts(products.slice());
-  }
-
-  const sortPriceAsc = () => {
-    products.sort((a,b)=> a.price-b.price);
-    setProducts(products.slice());
-  } // .price
-
-  // 312 - 12 = pos/neg
-  const sortPriceDesc = () => {
-    products.sort((a,b)=> b.price-a.price);
-    setProducts(products.slice());
-  }
-
+  // props.
+  //<ChildClass VÕTI={MUUTUJA} VÕTI2={FUNKTSIOON} />
   return (
   <div>
-    <button onClick={sortAZ}>{t('home.sortaz')}</button>
-    <button onClick={sortZA}>{t('home.sortza')}</button>
-    <button onClick={sortPriceAsc}>{t('home.sort-price-asc')}</button>
-    <button onClick={sortPriceDesc}>{t('home.sort-price-desc')}</button>
-    {products.map(element => 
-    <div key={element.id}>
+    <SortButtons
+      products={products}
+      updateProducts={setProducts} />
+    {products.map((element, index) => 
+    <div key={element.id + index}>
       <img src={element.imgSrc} alt="" />
       <div>{element.name}</div>
       <div>{element.price}</div>
+      <div>{element.id}</div>
       <button onClick={() => addToCart(element)}>{t("home.add-cart-button")}</button>
     </div>)}
   <ToastContainer />
