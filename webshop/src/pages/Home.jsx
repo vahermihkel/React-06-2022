@@ -7,8 +7,10 @@ import SortButtons from "../components/SortButtons";
 // toast erinevate lehtede erinev disain
 function Home() {
   const [products, setProducts] = useState([]);
+  const [originalProducts, setOriginalProducts] = useState([]);
   const productDb = "https://react-06-webshop-default-rtdb.europe-west1.firebasedatabase.app/products.json";
   const { t } = useTranslation();
+  const [categories, setCategories] = useState([]);
 
   // uef
   useEffect(()=>{
@@ -16,20 +18,25 @@ function Home() {
       .then(res => res.json())
       .then(data => {
         // {-N54pl: {1}, -321a: {2}} ---> [{1},{2}]
-        const newArray = [];
+        const productArray = [];
+        let categoryArray = [];
         for (const key in data) {
-          newArray.push(data[key]);
+          productArray.push(data[key]);
+          categoryArray.push(data[key].category);
         }
+        categoryArray = [...new Set(categoryArray)];
+        setCategories(categoryArray);
         // const product = {id: 2, name: "da", category: "a", isActive: true}
-        // const newArray = [];
+        // const productArray = [];
         // for (const key in product) {
         //   // 1. key: id
-        //   newArray.push(product[key]);   // product.id
+        //   productArray.push(product[key]);   // product.id
         //   // 2. key: name --> product.name
         //   // 3. key: category --> product.category
         // }
-        // newArray = [2, "da", "a", true];
-        setProducts(newArray);
+        // productArray = [2, "da", "a", true];
+        setProducts(productArray);
+        setOriginalProducts(productArray);
       })
   },[]);
 
@@ -55,20 +62,46 @@ function Home() {
     } else {
       // KUI ESIMEST KORDA + VAJUTATAKSE
       // [].push({product: {id: 312, name: "dasd"}, quantity: 1})
-      cartProducts.push({product: productClicked, quantity: 1});
+      const index = cartProducts.findIndex(element => element.product.id === 11122333)
+      if (index >= 0) {
+        cartProducts.splice(cartProducts.length-1, 0, {product: productClicked, quantity: 1});
+      } else {
+        cartProducts.push({product: productClicked, quantity: 1});
+      }
     }
           // "[{product: {id: 312, name: "dasd"}, quantity: 1}]"
           //[{product: {id: 312, name: "dasd"}, quantity: 2}]
     sessionStorage.setItem("cart", JSON.stringify(cartProducts));
     toast.success(t("home.cart-added"),{
+      position: "bottom-right",
       theme: "dark"
     });
+  }
+
+  const [selectedCategory, setSelectedCategory] = useState('all');
+
+  const filterProducts = (categoryClicked) => {
+    if (categoryClicked === 'all') {
+      setProducts(originalProducts);
+      setSelectedCategory('all');
+    } else {
+      const newProducts = originalProducts.filter(element => element.category === categoryClicked);
+      setProducts(newProducts);
+      setSelectedCategory(categoryClicked);
+    }
   }
 
   // props.
   //<ChildClass VÕTI={MUUTUJA} VÕTI2={FUNKTSIOON} />
   return (
   <div>
+    <div className={selectedCategory === 'all' ? 'active-category' : undefined } 
+          onClick={() => filterProducts('all')}>Kõik kategooriad</div>
+    {categories.map(element => 
+      <div className={selectedCategory === element ? 'active-category' : undefined } 
+        key={element} onClick={() => filterProducts(element)}>
+        {element}
+      </div>)}
     <SortButtons
       products={products}
       updateProducts={setProducts} />

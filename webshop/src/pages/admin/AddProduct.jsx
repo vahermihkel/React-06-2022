@@ -87,10 +87,16 @@ function AddProduct() {
       if (index >= 0) {
         setMessage("ID on mitteunikaalne!");
         setButtonDisabled(true);
+      } else if (idRef.current.value === "11122333") {
+        setMessage("Sisestasid pakiautomaadi ID!");
+        setButtonDisabled(true);
       } else {
         setMessage("");
         setButtonDisabled(false);
       }
+    } else {
+      setMessage("");
+      setButtonDisabled(true);
     }
   }
 
@@ -121,22 +127,15 @@ function AddProduct() {
 
 export default AddProduct;
 
-// Täna
-// ID unikaalsuse kontroll  onChange={} -> iga vajutusega funktsiooni käimapanek
-// kaardirakendus Leaflet (nagu Google Maps), poed sinna
-//          KOJU: print-screenidena poed andmebaasi
-// child klassid (props) -> event, data
-// Toodete haldamise leht valmis
-
-// T
-// ostukorvi kujundus
-// toast erinevate lehtede erinev disain
-
 // toodete otsing [ Tablet 10 inc ]  -> iga vajutusega otsib sarnaseid tooteid
 // avalehele kategooriate väljakuvamine -> näitab ainult seda kategooriat mille peale vajutati
-// dünaamilist CSS klassi 
+
 // pakiautomaadid -> fetch("pakiautomaadid")
 //          saan valida, salvestub, pannakse ostukorvi, eemaldatakse ostukorvi,
 //          ei saa kogust muuta, alati viimane ostukorvis, ID-ga ei saa lisada
 //  https://react-query.tanstack.com/overview
+
+// ostukorvi kujundus
+// toast erinevate lehtede erinev disain
+// dünaamilist CSS klassi 
 
