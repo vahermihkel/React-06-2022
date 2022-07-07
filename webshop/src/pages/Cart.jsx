@@ -1,5 +1,8 @@
 import { useRef } from "react";
 import { useEffect, useState } from "react";
+import { Button } from "react-bootstrap";
+import { toast, ToastContainer } from "react-toastify";
+import styles from '../css/Cart.module.css';
 
 function Cart() {
   const [cartProducts, setCartProducts] = useState(
@@ -8,8 +11,12 @@ function Cart() {
 
   const decreaseFromCart = (productIndex) => {
     // const index = cartProducts.findIndex(element => element.product.id === productClicked.product.id);
-    cartProducts[productIndex].quantity--;
-    if (cartProducts[productIndex].quantity === 0) {
+    const productClicked = cartProducts[productIndex];
+    if (productClicked.product.id === 11122333) {
+      return;
+    }
+    productClicked.quantity--;
+    if (productClicked.quantity === 0) {
       removeFromCart(productIndex);
     } else {
       setCartProducts(cartProducts.slice()); 
@@ -18,12 +25,20 @@ function Cart() {
   }
 
   const increaseFromCart = (productIndex) => {
-    cartProducts[productIndex].quantity++;
+    const productClicked = cartProducts[productIndex];
+    if (productClicked.product.id === 11122333) {
+      return;
+    }
+    productClicked.quantity++;
     setCartProducts(cartProducts.slice()); 
     sessionStorage.setItem("cart", JSON.stringify(cartProducts));
   }
 
   const removeFromCart = (productIndex) => {
+    const productClicked = cartProducts[productIndex];
+    if (productClicked.product.id === 11122333) {
+      return;
+    }
     cartProducts.splice(productIndex, 1);
     setCartProducts(cartProducts.slice()); 
     sessionStorage.setItem("cart", JSON.stringify(cartProducts));
@@ -63,21 +78,36 @@ function Cart() {
     sessionStorage.setItem("cart", JSON.stringify(cartProducts));
   }
 
+  const emptyCart = () => {
+    setCartProducts([]); 
+    sessionStorage.setItem("cart", JSON.stringify([]));
+    toast.success("Edukalt kõik ostukorvist kustutatud!", {
+      theme: "colored",
+      autoClose: 500000,
+    });
+  }
+
+  // #34d186
+  // #ff2800
+
   return ( 
-  <div>
-    <button>TÜHJENDA -- KODUS</button>
+  <div className={styles.cart}>
+    <ToastContainer toastStyle={{ backgroundColor: "#34d186" }} />
+    <Button variant="danger" className={styles.ferrariButton} onClick={emptyCart}>TÜHJENDA</Button>
     <div>OSTUKORV ON TÜHI VÕI MINGI TORE PILT</div>
     <div>TOASTIFY ASJAD</div>
     {cartProducts.map((element, index) => 
-    <div>
-      <img src={element.product.imgSrc} alt="" />
-      <div>{element.product.name}</div>
-      <div>{element.product.price}</div>
-      <button disabled={element.product.id === 11122333} onClick={() => decreaseFromCart(index)}>-</button>
-      <div>{element.quantity}</div>
-      <button disabled={element.product.id === 11122333} onClick={() => increaseFromCart(index)}>+</button>
-      <div>{element.product.price * element.quantity}</div>
-      <button disabled={element.product.id === 11122333} onClick={() => removeFromCart(index)}>x</button>
+    <div className={styles.cartProduct}>
+      <img className={styles.productImg} src={element.product.imgSrc} alt="" />
+      <div className={styles.productName}>{element.product.name}</div>
+      <div className={styles.productPrice}>{Number(element.product.price).toFixed(2)} €</div>
+      <div className={styles.quantityControls}>
+        <img className={styles.productButton + " " + (element.product.id === 11122333 && styles.disabled)} src={require("../assets/minus.png")} alt="" disabled={element.product.id === 11122333} onClick={() => decreaseFromCart(index)} />
+        <div>{element.quantity} tk</div>
+        <img className={styles.productButton + " " + (element.product.id === 11122333 && styles.disabled)} src={require("../assets/plus.png")} alt="" disabled={element.product.id === 11122333} onClick={() => increaseFromCart(index)} />
+      </div>
+      <div className={styles.totalSum}>{(element.product.price * element.quantity).toFixed(2)} €</div>
+      <img className={styles.productButton + " " + (element.product.id === 11122333 && styles.disabled)} src={require("../assets/delete.png")} alt="" disabled={element.product.id === 11122333} onClick={() => removeFromCart(index)} />
     </div>)}
 
     { selectedPM === null && cartProducts.length > 0 && <select ref={parcelMachineRef} onChange={selectParcelMachine}>

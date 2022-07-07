@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 // import { useTranslation } from 'react-i18next';
 
 function MaintainProducts() {
@@ -67,7 +68,10 @@ function MaintainProducts() {
         <div>{element.price}</div>
         <div>{element.description}</div>
         <div>{element.id}</div>
-        <button>MUUDA - KOJU</button>
+        <Link to={`/admin/muuda/${element.id}`}>
+        {/* <Link to={"/admin/muuda/" + element.id}> */}
+          <button>Muuda</button>
+        </Link>
         <button onClick={() => deleteProduct(index)}>Kustuta toode</button>
         {/* <button onClick={() => addToCart(element)}>{t("home.add-cart-button")}</button> */}
       </div>)}
