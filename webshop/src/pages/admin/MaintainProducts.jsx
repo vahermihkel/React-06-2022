@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 // import { useTranslation } from 'react-i18next';
+import styles from '../../css/Cart.module.css';
 
 function MaintainProducts() {
   const [products, setProducts] = useState([]);
@@ -55,19 +56,35 @@ function MaintainProducts() {
       element.description.toLowerCase().indexOf(searchedInput) >= 0
       );
     setProducts(newProducts);
-    console.log(newProducts);
+  }
+
+  const changeProductActive = (productClicked) => {
+    const index = originalProducts.findIndex(element => element.id === productClicked.id);
+    productClicked.isActive = !productClicked.isActive;
+    originalProducts[index] = productClicked;
+    setProducts(products.slice());
+    fetch(productDb, {
+      method: "PUT",
+      body: JSON.stringify(products),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
   }
 
   return ( <div>
     {/* input ref=otsimiseRef onChange={otsi} [  samsung  ] */}
     <input type="text" ref={searchedProductRef} onChange={searchProducts} />
+    <span>{products.length} tk</span>
      {products.map((element, index) => 
-      <div key={element.id + index}>
-        <img className="product-image" src={element.imgSrc} alt="" />
-        <div>{element.name}</div>
-        <div>{element.price}</div>
-        <div>{element.description}</div>
-        <div>{element.id}</div>
+      <div className={styles.cartProduct + " " + (element.isActive ? 'active' : 'inactive')} key={element.id + index}>
+        <div onClick={() => changeProductActive(element)}>
+          <img className="product-image" src={element.imgSrc} alt="" />
+          <div>{element.name}</div>
+          <div>{element.price}</div>
+          <div>{element.description}</div>
+          <div>{element.id}</div>
+        </div>
         <Link to={`/admin/muuda/${element.id}`}>
         {/* <Link to={"/admin/muuda/" + element.id}> */}
           <button>Muuda</button>
