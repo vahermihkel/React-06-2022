@@ -47,7 +47,7 @@ function EditProduct() {
     if (nameRef.current.value === "") {
       setMessage("Ei saa ilma nimeta toodet lisada!");
     } else {
-      setMessage("Lisatud edukalt toode " + nameRef.current.value);
+      // setMessage("Lisatud edukalt toode " + nameRef.current.value);
       const newProduct = {
         id: Number(idRef.current.value), 
         name: nameRef.current.value, 

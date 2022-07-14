@@ -16,10 +16,15 @@
   text-decoration: underline;
 }
 
-.active {
+.active-product {
   border: 1px solid green !important;
 }
 
-.inactive {
+.inactive-product {
   border: 1px solid red !important;
+}
+
+.carousel {
+  width: 500px;
+  margin: auto;
 }

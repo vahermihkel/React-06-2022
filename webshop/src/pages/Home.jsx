@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import { ToastContainer } from 'react-toastify';
-import SortButtons from "../components/SortButtons";
 import Pagination from 'react-bootstrap/Pagination';
-import Product from "../components/Product";
-import FilterBar from "../components/FilterBar";
+import { ToastContainer } from 'react-toastify';
+import SortButtons from "../components/home/SortButtons";
+import Product from "../components/home/Product";
+import FilterBar from "../components/home/FilterBar";
+import CarouselGallery from "../components/home/CarouselGallery";
+import Spinner from "../components/home/Spinner";
 
 // ffc    https://react-query.tanstack.com/overview
 // toast erinevate lehtede erinev disain
@@ -16,12 +18,15 @@ function Home() {
   const [pages, setPages] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(()=>{
+    // setLoading(true);
     fetch(productDb)
       .then(res => res.json())
       .then(body => {
         updateData(body);
+        setLoading(false);
       })
   },[]);
 
@@ -61,6 +66,8 @@ function Home() {
 
   return (
   <div>
+    <CarouselGallery />
+    { isLoading && <Spinner />}
     <div>Kokku {filteredProducts.length} toodet</div>
     { categories.length > 1 && <FilterBar
       originalProducts={originalProducts}

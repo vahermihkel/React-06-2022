@@ -77,7 +77,7 @@ function MaintainProducts() {
     <input type="text" ref={searchedProductRef} onChange={searchProducts} />
     <span>{products.length} tk</span>
      {products.map((element, index) => 
-      <div className={styles.cartProduct + " " + (element.isActive ? 'active' : 'inactive')} key={element.id + index}>
+      <div className={styles.cartProduct + " " + (element.isActive ? 'active-product' : 'inactive-product')} key={element.id + index}>
         <div onClick={() => changeProductActive(element)}>
           <img className="product-image" src={element.imgSrc} alt="" />
           <div>{element.name}</div>

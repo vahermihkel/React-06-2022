@@ -9,6 +9,9 @@ import Shops from './pages/Shops';
 import NavigationBar from './components/NavigationBar';
 import MaintainProducts from './pages/admin/MaintainProducts';
 import EditProduct from './pages/admin/EditProduct';
+import AboutUs from './pages/AboutUs';
+import NotFound from './pages/NotFound';
+import SingleProduct from './pages/SingleProduct';
 
 function App() {
   return (
@@ -23,6 +26,9 @@ function App() {
         <Route path='admin/muuda/:id' exact element={ <EditProduct /> } />
         <Route path='poed' exact element={ <Shops /> } />
         <Route path='ostukorv' exact element={ <Cart /> } />
+        <Route path='meist' exact element={ <AboutUs /> } />
+        <Route path='toode/:id' exact element={ <SingleProduct /> } />
+        <Route path='*' exact element={ <NotFound /> } />
       </Routes>
     </div>
   );

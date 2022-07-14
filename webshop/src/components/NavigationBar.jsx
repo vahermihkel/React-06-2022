@@ -18,7 +18,7 @@ function NavigationBar() {
       <Nav.Link as={Link} to="/admin">{t('navbar.admin-button')}</Nav.Link>
       <Nav.Link as={Link} to="/poed">{t('navbar.shops-button')}</Nav.Link>
       <Nav.Link as={Link} to="/ostukorv">{t('navbar.cart-button')}</Nav.Link>
-      <Nav.Link>{t("Welcome to React")}</Nav.Link>
+      <Nav.Link as={Link} to="/meist">Meist</Nav.Link>
       <img className="lang" onClick={() => changeLanguage('ee')} src={require("../assets/estonia.png")} alt="" />
       <img className="lang" onClick={() => changeLanguage('ru')} src={require("../assets/russia.png")} alt="" />
       <img className="lang" onClick={() => changeLanguage('uk')} src={require("../assets/uk.png")} alt="" />
