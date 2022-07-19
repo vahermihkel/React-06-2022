@@ -1,0 +1,482 @@
+[
+  {
+      "id": 19,
+      "name": "Tag Heuer",
+      "slug": "tag-heuer-2",
+      "permalink": "http://localhost/wordpress/product/tag-heuer-2/",
+      "date_created": "2022-07-19T11:04:26",
+      "date_created_gmt": "2022-07-19T11:04:26",
+      "date_modified": "2022-07-19T11:04:26",
+      "date_modified_gmt": "2022-07-19T11:04:26",
+      "type": "simple",
+      "status": "publish",
+      "featured": false,
+      "catalog_visibility": "visible",
+      "description": "",
+      "short_description": "",
+      "sku": "",
+      "price": "3000",
+      "regular_price": "3000",
+      "sale_price": "",
+      "date_on_sale_from": null,
+      "date_on_sale_from_gmt": null,
+      "date_on_sale_to": null,
+      "date_on_sale_to_gmt": null,
+      "on_sale": false,
+      "purchasable": true,
+      "total_sales": 0,
+      "virtual": false,
+      "downloadable": false,
+      "downloads": [],
+      "download_limit": -1,
+      "download_expiry": -1,
+      "external_url": "",
+      "button_text": "",
+      "tax_status": "taxable",
+      "tax_class": "",
+      "manage_stock": false,
+      "stock_quantity": null,
+      "backorders": "no",
+      "backorders_allowed": false,
+      "backordered": false,
+      "low_stock_amount": null,
+      "sold_individually": false,
+      "weight": "",
+      "dimensions": {
+          "length": "",
+          "width": "",
+          "height": ""
+      },
+      "shipping_required": true,
+      "shipping_taxable": true,
+      "shipping_class": "",
+      "shipping_class_id": 0,
+      "reviews_allowed": true,
+      "average_rating": "0.00",
+      "rating_count": 0,
+      "upsell_ids": [],
+      "cross_sell_ids": [],
+      "parent_id": 0,
+      "purchase_note": "",
+      "categories": [
+          {
+              "id": 16,
+              "name": "Uncategorized",
+              "slug": "uncategorized"
+          }
+      ],
+      "tags": [],
+      "images": [],
+      "attributes": [],
+      "default_attributes": [],
+      "variations": [],
+      "grouped_products": [],
+      "menu_order": 0,
+      "price_html": "<span class=\"woocommerce-Price-amount amount\"><bdi>3000,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\">&euro;</span></bdi></span>",
+      "related_ids": [
+          16,
+          14,
+          18,
+          17
+      ],
+      "meta_data": [],
+      "stock_status": "instock",
+      "has_options": false,
+      "_links": {
+          "self": [
+              {
+                  "href": "http://localhost/wordpress/wp-json/wc/v3/products/19"
+              }
+          ],
+          "collection": [
+              {
+                  "href": "http://localhost/wordpress/wp-json/wc/v3/products"
+              }
+          ]
+      }
+  },
+  {
+      "id": 18,
+      "name": "Aegaon",
+      "slug": "tag-heuer",
+      "permalink": "http://localhost/wordpress/product/tag-heuer/",
+      "date_created": "2022-07-19T11:03:40",
+      "date_created_gmt": "2022-07-19T11:03:40",
+      "date_modified": "2022-07-19T11:04:01",
+      "date_modified_gmt": "2022-07-19T11:04:01",
+      "type": "simple",
+      "status": "publish",
+      "featured": false,
+      "catalog_visibility": "visible",
+      "description": "",
+      "short_description": "",
+      "sku": "",
+      "price": "600",
+      "regular_price": "600",
+      "sale_price": "",
+      "date_on_sale_from": null,
+      "date_on_sale_from_gmt": null,
+      "date_on_sale_to": null,
+      "date_on_sale_to_gmt": null,
+      "on_sale": false,
+      "purchasable": true,
+      "total_sales": 0,
+      "virtual": false,
+      "downloadable": false,
+      "downloads": [],
+      "download_limit": -1,
+      "download_expiry": -1,
+      "external_url": "",
+      "button_text": "",
+      "tax_status": "taxable",
+      "tax_class": "",
+      "manage_stock": false,
+      "stock_quantity": null,
+      "backorders": "no",
+      "backorders_allowed": false,
+      "backordered": false,
+      "low_stock_amount": null,
+      "sold_individually": false,
+      "weight": "",
+      "dimensions": {
+          "length": "",
+          "width": "",
+          "height": ""
+      },
+      "shipping_required": true,
+      "shipping_taxable": true,
+      "shipping_class": "",
+      "shipping_class_id": 0,
+      "reviews_allowed": true,
+      "average_rating": "0.00",
+      "rating_count": 0,
+      "upsell_ids": [],
+      "cross_sell_ids": [],
+      "parent_id": 0,
+      "purchase_note": "",
+      "categories": [
+          {
+              "id": 16,
+              "name": "Uncategorized",
+              "slug": "uncategorized"
+          }
+      ],
+      "tags": [],
+      "images": [],
+      "attributes": [],
+      "default_attributes": [],
+      "variations": [],
+      "grouped_products": [],
+      "menu_order": 0,
+      "price_html": "<span class=\"woocommerce-Price-amount amount\"><bdi>600,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\">&euro;</span></bdi></span>",
+      "related_ids": [
+          14,
+          19,
+          17,
+          16
+      ],
+      "meta_data": [],
+      "stock_status": "instock",
+      "has_options": false,
+      "_links": {
+          "self": [
+              {
+                  "href": "http://localhost/wordpress/wp-json/wc/v3/products/18"
+              }
+          ],
+          "collection": [
+              {
+                  "href": "http://localhost/wordpress/wp-json/wc/v3/products"
+              }
+          ]
+      }
+  },
+  {
+      "id": 17,
+      "name": "Hugo Boss",
+      "slug": "hugo-boss",
+      "permalink": "http://localhost/wordpress/product/hugo-boss/",
+      "date_created": "2022-07-19T11:03:25",
+      "date_created_gmt": "2022-07-19T11:03:25",
+      "date_modified": "2022-07-19T11:03:25",
+      "date_modified_gmt": "2022-07-19T11:03:25",
+      "type": "simple",
+      "status": "publish",
+      "featured": false,
+      "catalog_visibility": "visible",
+      "description": "",
+      "short_description": "",
+      "sku": "",
+      "price": "599",
+      "regular_price": "599",
+      "sale_price": "",
+      "date_on_sale_from": null,
+      "date_on_sale_from_gmt": null,
+      "date_on_sale_to": null,
+      "date_on_sale_to_gmt": null,
+      "on_sale": false,
+      "purchasable": true,
+      "total_sales": 0,
+      "virtual": false,
+      "downloadable": false,
+      "downloads": [],
+      "download_limit": -1,
+      "download_expiry": -1,
+      "external_url": "",
+      "button_text": "",
+      "tax_status": "taxable",
+      "tax_class": "",
+      "manage_stock": false,
+      "stock_quantity": null,
+      "backorders": "no",
+      "backorders_allowed": false,
+      "backordered": false,
+      "low_stock_amount": null,
+      "sold_individually": false,
+      "weight": "",
+      "dimensions": {
+          "length": "",
+          "width": "",
+          "height": ""
+      },
+      "shipping_required": true,
+      "shipping_taxable": true,
+      "shipping_class": "",
+      "shipping_class_id": 0,
+      "reviews_allowed": true,
+      "average_rating": "0.00",
+      "rating_count": 0,
+      "upsell_ids": [],
+      "cross_sell_ids": [],
+      "parent_id": 0,
+      "purchase_note": "",
+      "categories": [
+          {
+              "id": 16,
+              "name": "Uncategorized",
+              "slug": "uncategorized"
+          }
+      ],
+      "tags": [],
+      "images": [],
+      "attributes": [],
+      "default_attributes": [],
+      "variations": [],
+      "grouped_products": [],
+      "menu_order": 0,
+      "price_html": "<span class=\"woocommerce-Price-amount amount\"><bdi>599,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\">&euro;</span></bdi></span>",
+      "related_ids": [
+          18,
+          16,
+          14,
+          19
+      ],
+      "meta_data": [],
+      "stock_status": "instock",
+      "has_options": false,
+      "_links": {
+          "self": [
+              {
+                  "href": "http://localhost/wordpress/wp-json/wc/v3/products/17"
+              }
+          ],
+          "collection": [
+              {
+                  "href": "http://localhost/wordpress/wp-json/wc/v3/products"
+              }
+          ]
+      }
+  },
+  {
+      "id": 16,
+      "name": "Rolex",
+      "slug": "rolex",
+      "permalink": "http://localhost/wordpress/product/rolex/",
+      "date_created": "2022-07-19T11:02:59",
+      "date_created_gmt": "2022-07-19T11:02:59",
+      "date_modified": "2022-07-19T11:02:59",
+      "date_modified_gmt": "2022-07-19T11:02:59",
+      "type": "simple",
+      "status": "publish",
+      "featured": false,
+      "catalog_visibility": "visible",
+      "description": "",
+      "short_description": "",
+      "sku": "",
+      "price": "12999",
+      "regular_price": "12999",
+      "sale_price": "",
+      "date_on_sale_from": null,
+      "date_on_sale_from_gmt": null,
+      "date_on_sale_to": null,
+      "date_on_sale_to_gmt": null,
+      "on_sale": false,
+      "purchasable": true,
+      "total_sales": 0,
+      "virtual": false,
+      "downloadable": false,
+      "downloads": [],
+      "download_limit": -1,
+      "download_expiry": -1,
+      "external_url": "",
+      "button_text": "",
+      "tax_status": "taxable",
+      "tax_class": "",
+      "manage_stock": false,
+      "stock_quantity": null,
+      "backorders": "no",
+      "backorders_allowed": false,
+      "backordered": false,
+      "low_stock_amount": null,
+      "sold_individually": false,
+      "weight": "",
+      "dimensions": {
+          "length": "",
+          "width": "",
+          "height": ""
+      },
+      "shipping_required": true,
+      "shipping_taxable": true,
+      "shipping_class": "",
+      "shipping_class_id": 0,
+      "reviews_allowed": true,
+      "average_rating": "0.00",
+      "rating_count": 0,
+      "upsell_ids": [],
+      "cross_sell_ids": [],
+      "parent_id": 0,
+      "purchase_note": "",
+      "categories": [
+          {
+              "id": 16,
+              "name": "Uncategorized",
+              "slug": "uncategorized"
+          }
+      ],
+      "tags": [],
+      "images": [],
+      "attributes": [],
+      "default_attributes": [],
+      "variations": [],
+      "grouped_products": [],
+      "menu_order": 0,
+      "price_html": "<span class=\"woocommerce-Price-amount amount\"><bdi>12999,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\">&euro;</span></bdi></span>",
+      "related_ids": [
+          18,
+          14,
+          19,
+          17
+      ],
+      "meta_data": [],
+      "stock_status": "instock",
+      "has_options": false,
+      "_links": {
+          "self": [
+              {
+                  "href": "http://localhost/wordpress/wp-json/wc/v3/products/16"
+              }
+          ],
+          "collection": [
+              {
+                  "href": "http://localhost/wordpress/wp-json/wc/v3/products"
+              }
+          ]
+      }
+  },
+  {
+      "id": 14,
+      "name": "Toode1",
+      "slug": "toode1",
+      "permalink": "http://localhost/wordpress/product/toode1/",
+      "date_created": "2022-07-17T14:08:34",
+      "date_created_gmt": "2022-07-17T14:08:34",
+      "date_modified": "2022-07-17T14:08:34",
+      "date_modified_gmt": "2022-07-17T14:08:34",
+      "type": "simple",
+      "status": "publish",
+      "featured": false,
+      "catalog_visibility": "visible",
+      "description": "<p>Toote kirjeldus</p>\n",
+      "short_description": "",
+      "sku": "",
+      "price": "8.99",
+      "regular_price": "8.99",
+      "sale_price": "",
+      "date_on_sale_from": null,
+      "date_on_sale_from_gmt": null,
+      "date_on_sale_to": null,
+      "date_on_sale_to_gmt": null,
+      "on_sale": false,
+      "purchasable": true,
+      "total_sales": 0,
+      "virtual": false,
+      "downloadable": false,
+      "downloads": [],
+      "download_limit": -1,
+      "download_expiry": -1,
+      "external_url": "",
+      "button_text": "",
+      "tax_status": "taxable",
+      "tax_class": "",
+      "manage_stock": false,
+      "stock_quantity": null,
+      "backorders": "no",
+      "backorders_allowed": false,
+      "backordered": false,
+      "low_stock_amount": null,
+      "sold_individually": false,
+      "weight": "",
+      "dimensions": {
+          "length": "",
+          "width": "",
+          "height": ""
+      },
+      "shipping_required": true,
+      "shipping_taxable": true,
+      "shipping_class": "",
+      "shipping_class_id": 0,
+      "reviews_allowed": true,
+      "average_rating": "0.00",
+      "rating_count": 0,
+      "upsell_ids": [],
+      "cross_sell_ids": [],
+      "parent_id": 0,
+      "purchase_note": "",
+      "categories": [
+          {
+              "id": 16,
+              "name": "Uncategorized",
+              "slug": "uncategorized"
+          }
+      ],
+      "tags": [],
+      "images": [],
+      "attributes": [],
+      "default_attributes": [],
+      "variations": [],
+      "grouped_products": [],
+      "menu_order": 0,
+      "price_html": "<span class=\"woocommerce-Price-amount amount\"><bdi>8,99&nbsp;<span class=\"woocommerce-Price-currencySymbol\">&euro;</span></bdi></span>",
+      "related_ids": [
+          16,
+          18,
+          19,
+          17
+      ],
+      "meta_data": [],
+      "stock_status": "instock",
+      "has_options": false,
+      "_links": {
+          "self": [
+              {
+                  "href": "http://localhost/wordpress/wp-json/wc/v3/products/14"
+              }
+          ],
+          "collection": [
+              {
+                  "href": "http://localhost/wordpress/wp-json/wc/v3/products"
+              }
+          ]
+      }
+  }
+]

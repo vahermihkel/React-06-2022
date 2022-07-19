@@ -17,10 +17,10 @@ function Avaleht() {
   // 8. ostukorvis kogusumma kokku arvutada     .forEach(elementListist => ...)
   const [tooted, uuendaTooted] = useState([]);
 
-  const dbUrl = "https://react-06-2022-default-rtdb.europe-west1.firebasedatabase.app/tooted.json";
+  const dbUrl = "http://localhost/wordpress/wp-json/wc/store/products";
 
   useEffect(()=>{
-    fetch(dbUrl).then(tagastus => tagastus.json()).then(sisu => {
+    fetch(dbUrl).then(tagastus => console.log(tagastus)).then(sisu => {
       // console.log(sisu);
       // {-N4: {…}, -Mr: {…}, -KA: {…}}  -----> [{…},{…},{…}]
       // uuendaTooted(sisu);

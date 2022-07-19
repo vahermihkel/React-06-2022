@@ -6,7 +6,7 @@ function VaataTooteid() {
   // const [tootedLocalStoragest, muudaTooted] = useState(JSON.parse(localStorage.getItem("toodeteV6ti")) || []);
   const [tooted, muudaTooted] = useState([]);
 
-  const dbUrl = "https://react-06-2022-default-rtdb.europe-west1.firebasedatabase.app/tooted.json";
+  const dbUrl = "http://localhost/wordpress/wp-json/wc/v1/products?consumer_key=ck_d6d0ac010b6c7ad2ac19d2e06c5f0cf5a14b87ba&consumer_secret=cs_b508ece4284e6793c2b7803e957bc659e7226ecf";
 
   useEffect(()=>{
     fetch(dbUrl).then(tagastus => tagastus.json()).then(sisu => {
