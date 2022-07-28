@@ -5,7 +5,7 @@ function SingleProduct() {
   // const params = useParams();    params.id
   const { id } = useParams();   // id
   const productDbUrl = "https://react-06-webshop-default-rtdb.europe-west1.firebasedatabase.app/products.json";
-  const [product, setProduct] = useState({});
+  const [product, setProduct] = useState({name:"", description: "", price: 0, imgSrc: ""});
 
   useEffect(() => {
     fetch(productDbUrl)

@@ -18,17 +18,17 @@ function App() {
     <div >
       <NavigationBar />
       <Routes>
-        <Route path='' exact element={ <Home /> } />
-        <Route path='admin' exact element={ <AdminHome /> } />
-        <Route path='admin/lisa-toode' exact element={ <AddProduct />} />
-        <Route path='admin/tooted' exact element={ <MaintainProducts /> } />
-        <Route path='admin/kategooriad' exact element={ <Category /> } />
-        <Route path='admin/muuda/:id' exact element={ <EditProduct /> } />
-        <Route path='poed' exact element={ <Shops /> } />
-        <Route path='ostukorv' exact element={ <Cart /> } />
-        <Route path='meist' exact element={ <AboutUs /> } />
-        <Route path='toode/:id' exact element={ <SingleProduct /> } />
-        <Route path='*' exact element={ <NotFound /> } />
+        <Route path='' element={ <Home /> } />
+        <Route path='admin' element={ <AdminHome /> } />
+        <Route path='admin/lisa-toode' element={ <AddProduct />} />
+        <Route path='admin/tooted' element={ <MaintainProducts /> } />
+        <Route path='admin/kategooriad' element={ <Category /> } />
+        <Route path='admin/muuda/:id' element={ <EditProduct /> } />
+        <Route path='poed' element={ <Shops /> } />
+        <Route path='ostukorv' element={ <Cart /> } />
+        <Route path='meist' element={ <AboutUs /> } />
+        <Route path='toode/:id' element={ <SingleProduct /> } />
+        <Route path='*' element={ <NotFound /> } />
       </Routes>
     </div>
   );

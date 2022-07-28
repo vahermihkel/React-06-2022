@@ -1,7 +1,15 @@
+import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api";
 import { useState } from "react";
 
 function Cart() {
   const [cart, setCart] = useState(JSON.parse(sessionStorage.getItem("cart")) || []);
+
+  const api = new WooCommerceRestApi({
+    url: "http://localhost/wordpress",
+    consumerKey: "ck_d6d0ac010b6c7ad2ac19d2e06c5f0cf5a14b87ba",
+    consumerSecret: "cs_b508ece4284e6793c2b7803e957bc659e7226ecf",
+    version: "wc/v3"
+  });
 
   const decreaseQuantity = (productClicked) => {
     const index = cart.findIndex(element => element.product.id === productClicked.product.id);
@@ -28,10 +36,13 @@ function Cart() {
   }
 
   const sendOrderToWordpress = () => {
-    const lineItems = cart.map(element => {return {id: element.product.id, quantity: element.quantity}});
-    // const wordpressProducts = ids.map(element => );
-    console.log(lineItems);
-    return Math.floor(Math.random()*899999+100000);
+    const lineItems = cart.map(element => {return {product_id: element.product.id, quantity: element.quantity}});
+    const orderPromise = api.post("orders", {
+      "line_items": lineItems
+    }).then(
+      res => {return res.data.id}
+    )
+    orderPromise.then(result => pay(result));
   }
 
   const calculateTotalSum = () => {
@@ -40,8 +51,7 @@ function Cart() {
     return cartSum;
   }
 
-  const pay = () => {
-    const orderId = sendOrderToWordpress();
+  const pay = (orderId) => {
     const paymentData = {
       "api_username": "92ddcfab96e34a5f",
       "account_name": "EUR3D1",
@@ -81,7 +91,7 @@ function Cart() {
           <button onClick={() => removeProduct(element)}>x</button>
         </div>)}
         <div>{calculateTotalSum()} €</div>
-        <button onClick={() => pay()}>Maksma</button>
+        <button onClick={() => sendOrderToWordpress()}>Maksma</button>
     </div> );
 }
 

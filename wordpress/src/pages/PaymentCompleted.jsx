@@ -1,24 +1,41 @@
+import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api";
 import { useEffect, useState } from "react";
 
 function PaymentCompleted() {
  
   const url = window.location.href;
-  console.log(url);
   const order_reference = url.split("order_reference=")[1].split("&")[0];
-  console.log(order_reference);
   const payment_reference = url.split("payment_reference=")[1];
-  console.log(payment_reference);
 
   const [paymentState, setPaymentState] = useState("");
 
   useEffect(() => {
+    const api = new WooCommerceRestApi({
+      url: "http://localhost/wordpress",
+      consumerKey: "ck_d6d0ac010b6c7ad2ac19d2e06c5f0cf5a14b87ba",
+      consumerSecret: "cs_b508ece4284e6793c2b7803e957bc659e7226ecf",
+      version: "wc/v3"
+    });
     fetch("https://igw-demo.every-pay.com/api/v4/payments/" + payment_reference + "?api_username=92ddcfab96e34a5f", {
       headers: {
         "Authorization": "Basic OTJkZGNmYWI5NmUzNGE1Zjo4Y2QxOWU5OWU5YzJjMjA4ZWU1NjNhYmY3ZDBlNGRhZA=="
       }
     }).then(res => res.json())
     .then(data => {
-      console.log(data);
+      console.log(data.payment_state);
+      let status;
+      if (data.payment_state === "settled") {
+        status = "processing";
+        setPaymentState("settled");
+      } else if (data.payment_state === "failed") {
+        status = "failed";
+        setPaymentState("failed");
+      }
+      api.post("orders/" + data.order_reference, {
+        "status": status
+      }).then(
+        res => console.log(res)
+      )
       // fetch Wordpressi --> muudan tellimuse staatust: Failed / Processing
     })
   }, [payment_reference]);

@@ -1,8 +1,29 @@
-import ProductsFromWordpress from '../products.json';
+import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api";
+import { useEffect, useState } from 'react';
+
 
 function HomePage() {
     // HILJEM - fetch kaudu kõik tooted
-  const products = ProductsFromWordpress;
+  // const products = ProductsFromWordpress;
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const api = new WooCommerceRestApi({
+      url: "http://localhost/wordpress",
+      consumerKey: "ck_d6d0ac010b6c7ad2ac19d2e06c5f0cf5a14b87ba",
+      consumerSecret: "cs_b508ece4284e6793c2b7803e957bc659e7226ecf",
+      version: "wc/v3",
+      axiosConfig: {
+        headers: {}
+      }
+    });
+    api.get("products",{
+      per_page: 2,
+      page: 2
+    }).then(
+      res => setProducts(res.data)
+    )
+  }, []); 
 
   // COPY-PASTE OSTUKORVI LISAMINE
   // sessionStorage.    "cart"
@@ -21,7 +42,7 @@ function HomePage() {
   return ( 
     <div>
       {products.map(element => 
-      <div>
+      <div key={element.id}>
         <div>{element.id}</div>
         <div>{element.name}</div>
         <div>{element.price} €</div>

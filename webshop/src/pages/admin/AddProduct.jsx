@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import FileUpload from "../../components/FileUpload";
+import { ProductModel } from "../../models/Product.model";
 
 function AddProduct() {
   const idRef = useRef();
@@ -10,17 +11,17 @@ function AddProduct() {
   const imgSrcRef = useRef();
   const isActiveRef = useRef();
   
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState<string>("");
   const productDbUrl = "https://react-06-webshop-default-rtdb.europe-west1.firebasedatabase.app/products.json";
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState<string[]>([]);
   const categoryDbUrl = "https://react-06-webshop-default-rtdb.europe-west1.firebasedatabase.app/categories.json";
-  const [products, setProducts] = useState([]);
-  const [buttonDisabled, setButtonDisabled] = useState(true);
+  const [products, setProducts] = useState<ProductModel[]>([]);
+  const [buttonDisabled, setButtonDisabled] = useState<boolean>(true);
 
-  const [productImg, setProductImg] = useState("");
+  const [productImg, setProductImg] = useState<string>("");
   const imgUrlRef = useRef();
   const imgFileRef = useRef();
-  const [showUrlUpload, setShowUrlUpload] = useState(false);
+  const [showUrlUpload, setShowUrlUpload] = useState<boolean>(false);
 
   useEffect(() => {
     fetch(categoryDbUrl).then(res => res.json())

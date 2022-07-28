@@ -6,19 +6,20 @@ import Product from "../components/home/Product";
 import FilterBar from "../components/home/FilterBar";
 import CarouselGallery from "../components/home/CarouselGallery";
 import Spinner from "../components/home/Spinner";
+import { ProductModel } from "../models/Product.model";
 
 // ffc    https://react-query.tanstack.com/overview
 // toast erinevate lehtede erinev disain
 function Home() {
-  const [products, setProducts] = useState([]);
-  const [originalProducts, setOriginalProducts] = useState([]);
+  const [products, setProducts] = useState<ProductModel[]>([]);
+  const [originalProducts, setOriginalProducts] = useState<ProductModel[]>([]);
   const productDb = "https://react-06-webshop-default-rtdb.europe-west1.firebasedatabase.app/products.json";
-  const [categories, setCategories] = useState([]);
-  const [activePage, setActivePage] = useState(1);
-  const [pages, setPages] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('all');
-  const [filteredProducts, setFilteredProducts] = useState([]);
-  const [isLoading, setLoading] = useState(true);
+  const [categories, setCategories] = useState<string[]>([]);
+  const [activePage, setActivePage] = useState<number>(1);
+  const [pages, setPages] = useState<number[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [filteredProducts, setFilteredProducts] = useState<ProductModel[]>([]);
+  const [isLoading, setLoading] = useState<boolean>(true);
 
   useEffect(()=>{
     // setLoading(true);
@@ -30,13 +31,13 @@ function Home() {
       })
   },[]);
 
-  const updateData = (firebaseProducts) => {
-    const productArray = [];
+  const updateData = (firebaseProducts: any) => {
+    const productArray: ProductModel[] = [];
     let categoryArray = [];
     const pagesArray = [];
     let i = 0;
     for (const key in firebaseProducts) {
-      const product = firebaseProducts[key];
+      const product: ProductModel = firebaseProducts[key];
       if (product.isActive) {
         productArray.push(product);
         categoryArray.push(product.category);
@@ -54,7 +55,7 @@ function Home() {
     setPages(pagesArray);
   }
 
-  const changePage = (number) => {
+  const changePage = (number: number) => {
     setActivePage(number);
     if (selectedCategory === 'all') {
       setProducts(originalProducts.slice(number*10-10, number*10));
